@@ -227,12 +227,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
 
         .link-icon:hover {
             background: #608cc5;
             border-color: #2c5282;
             color: white;
+        }
+
+        .entry-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .entry-title a {
+            color: #1a365d;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .entry-title a:hover {
+            color: #2c5282;
+            text-decoration: underline;
         }
 
         .edit-btn, .remove-btn {
@@ -1550,7 +1567,7 @@
                 
                 entryDiv.innerHTML = `
                     <div class="entry-info">
-                        <div class="entry-title">${entry.title}</div>
+                        <div class="entry-title"><a href="${entry.link}" target="_blank">${entry.title}</a></div>
                         <div class="entry-description" style="color: #666; font-size: 14px; margin-bottom: 5px;">${entry.description}</div>
                         <div class="entry-geography" style="font-size: 12px; color: #999;">Geography: ${entry.geo}</div>
                         ${industryTags ? `<div class="industry-tags">${industryTags}</div>` : ''}
@@ -1564,7 +1581,7 @@
                             </div>
                         </div>
                         <div class="action-buttons">
-                            <a href="${entry.link}" target="_blank" class="link-icon" title="Open Link">🔗</a>
+                            <button class="link-icon" onclick="copyToClipboard('${entry.link}', this)" title="Copy Link">📋</button>
                             <button class="edit-btn" onclick="openModal(${index})" title="Edit">⚙</button>
                             <button class="remove-btn" onclick="removeEntry(${index})" title="Remove">✕</button>
                         </div>
@@ -1580,6 +1597,26 @@
                 databaseEntries.splice(index, 1);
                 renderDatabaseEntries();
             }
+        }
+
+        // Copy to clipboard function
+        function copyToClipboard(text, buttonElement) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Show temporary feedback
+                const originalText = buttonElement.innerHTML;
+                buttonElement.innerHTML = '✓';
+                buttonElement.style.background = '#28a745';
+                buttonElement.style.borderColor = '#28a745';
+                
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalText;
+                    buttonElement.style.background = '#1a365d';
+                    buttonElement.style.borderColor = '#1a365d';
+                }, 1000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy link to clipboard');
+            });
         }
 
         // Voting functionality
