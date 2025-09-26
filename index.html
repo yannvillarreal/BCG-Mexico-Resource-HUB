@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCG Mexico Microsite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Banner styling */
+        .banner {
+            background-color: #f5f3eb;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .banner-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a365d 0%, #59b277 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
+        }
+
+        .logo-icon::before {
+            content: "BCG";
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        .logo-text {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e503c;
+            letter-spacing: 2px;
+        }
+
+        .logo-subtitle {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-top: -5px;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 80px);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .right-column {
+            flex: 0 0 20%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Database Column (80%) */
+        .database-column {
+            flex: 0 0 80%;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .database-header {
+            margin-bottom: 20px;
+        }
+
+        .welcome-section {
+            margin-bottom: 20px;
+        }
+
+        .welcome-section h2 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .welcome-text {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .instruction-tips {
+            background: #f8f9fa;
+            border-left: 4px solid #59b277;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .tip-item {
+            font-size: 13px;
+            color: #495057;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .tip-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .search-bar {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #1a365d;
+        }
+
+        .add-new-btn {
+            background: #59b277;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .add-new-btn:hover {
+            background: #4a9a66;
+        }
+
+        .database-entries {
+            margin-top: 20px;
+        }
+
+        .database-entry {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .entry-info {
+            flex: 1;
+        }
+
+        .entry-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .entry-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .voting-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .link-icon {
+            background: #1a365d;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 600;
+            border: 2px solid #1a365d;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-icon:hover {
+            background: #608cc5;
+            border-color: #2c5282;
+            color: white;
+        }
+
+        .edit-btn, .remove-btn {
+            padding: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .edit-btn {
+            background: #e9ecef;
+            color: #495057;
+            border: 2px solid #adb5bd;
+        }
+
+        .edit-btn:hover {
+            background: #495057;
+            border-color: #495057;
+            color: #e9ecef;
+        }
+
+        .remove-btn {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .remove-btn:hover {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: #f8d7da;
+        }
+
+        /* Announcements Column */
+        .announcements-column {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Resources Column */
+        .resources-column {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resources-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .resource-section {
+            margin-bottom: 20px;
+        }
+
+        .resource-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .section-title-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .section-actions {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+
+        .section-edit-btn, .section-remove-btn {
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .section-edit-btn {
+            background: #e9ecef;
+            color: #495057;
+            border: 1px solid #adb5bd;
+        }
+
+        .section-edit-btn:hover {
+            background: #495057;
+            border-color: #495057;
+            color: #e9ecef;
+        }
+
+        .section-remove-btn {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .section-remove-btn:hover {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: #f8d7da;
+        }
+
+        .resource-section-header:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+        }
+
+        .resource-section-header.expanded {
+            background: #e6fffa;
+            border-color: #59b277;
+        }
+
+        .expand-icon {
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .resource-section-header.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .resource-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .resource-content.expanded {
+            max-height: 500px;
+        }
+
+        .resource-links {
+            padding: 15px;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .resource-item:hover {
+            background: #f8f9fa;
+            border-color: #adb5bd;
+        }
+
+        .resource-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .resource-link {
+            flex: 1;
+            text-decoration: none;
+            color: #1a365d;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .resource-link:hover {
+            color: #2c5282;
+        }
+
+        .resource-actions {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+
+        .resource-edit-btn, .resource-remove-btn {
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .resource-edit-btn {
+            background: #e9ecef;
+            color: #495057;
+            border: 1px solid #adb5bd;
+        }
+
+        .resource-edit-btn:hover {
+            background: #495057;
+            border-color: #495057;
+            color: #e9ecef;
+        }
+
+        .resource-remove-btn {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .resource-remove-btn:hover {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: #f8d7da;
+        }
+
+        .add-resource-btn {
+            background: #59b277;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .add-resource-btn:hover {
+            background: #4a9a66;
+        }
+
+        .add-new-section-btn {
+            background: #59b277;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            margin-top: 20px;
+            align-self: flex-end;
+        }
+
+        .add-new-section-btn:hover {
+            background: #4a9a66;
+        }
+
+        .announcements-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .location-slider {
+            display: flex;
+            background: #e9ecef;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .slider-option {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .slider-option.active {
+            background: #1a365d;
+            color: white;
+        }
+
+        .toggle-container {
+            margin-bottom: 20px;
+        }
+
+        .toggle-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .toggle-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toggle-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .toggle-status {
+            font-size: 16px;
+            color: #666;
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #59b277;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-status {
+            margin-top: 10px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-input-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-input-with-button {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .form-input-with-button:focus {
+            outline: none;
+            border-color: #1a365d;
+        }
+
+        .auto-generate-btn {
+            background: #10a37f;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .auto-generate-btn:hover {
+            background: #0d8a6b;
+        }
+
+        .openai-logo {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #10a37f;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #1a365d;
+        }
+
+        .form-textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .save-btn, .cancel-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .save-btn {
+            background: #59b277;
+            color: white;
+        }
+
+        .save-btn:hover {
+            background: #4a9a66;
+        }
+
+        .cancel-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background: #545b62;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Industry tags */
+        .industry-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .industry-tag {
+            background: #e6fffa;
+            color: #1a365d;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            border: 1px solid #59b277;
+        }
+
+        /* Form layout improvements */
+        .form-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-row .form-label {
+            margin-bottom: 0;
+            min-width: 100px;
+        }
+
+        .form-row .form-select {
+            flex: 1;
+        }
+
+        /* Industry dropdown */
+        .industry-dropdown {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            background: white;
+            padding: 10px;
+        }
+
+        .industry-option {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+
+        .industry-option input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Timestamp styling */
+        .timestamp {
+            font-size: 11px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .no-food-message {
+            font-size: 16px;
+            color: #6c757d;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+
+        .food-menu {
+            margin-top: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-label {
+            font-weight: 600;
+            color: #1a365d;
+            min-width: 80px;
+            margin-right: 10px;
+        }
+
+        .menu-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .menu-input:focus {
+            outline: none;
+            border-color: #59b277;
+        }
+
+        /* Voting buttons */
+        .vote-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .vote-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .thumbs-up {
+            color: #6c757d;
+        }
+
+        .thumbs-up:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+            color: #495057;
+        }
+
+        .thumbs-up.voted {
+            background: #e8f5e8;
+            border-color: #28a745;
+            color: #28a745;
+        }
+
+        .thumbs-down {
+            color: #6c757d;
+        }
+
+        .thumbs-down:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+            color: #495057;
+        }
+
+        .thumbs-down.voted {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .vote-score {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a365d;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Error message styling */
+        .error-message {
+            background: #fee;
+            color: #c53030;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            border: 1px solid #feb2b2;
+            font-size: 14px;
+        }
+
+        /* Modal scrollbar styling */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #59b277;
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #4a9a66;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner with BCG Mexico Logo -->
+    <div class="banner">
+        <div class="banner-logo">
+            <div class="logo-icon"></div>
+            <div>
+                <div class="logo-text">MEXICO</div>
+                <div class="logo-subtitle">RESOURCE HUB</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Database Column (80%) -->
+        <div class="database-column">
+            <div class="database-header">
+                <div class="welcome-section">
+                    <h2>Welcome to the BCG Mexico internal resource database</h2>
+                    <p class="welcome-text">
+                        This platform helps you discover, share, and manage valuable resources across our Mexico offices. 
+                        <strong>Add new resources</strong> using the "Add New" button, <strong>search</strong> by title, description, geography, or industry, and <strong>vote</strong> on resources to help your colleagues find the most valuable content.
+                    </p>
+                    <div class="instruction-tips">
+                        <div class="tip-item">💡 <strong>Tip:</strong> Use the search bar to filter by geography, industry, or keywords</div>
+                        <div class="tip-item">👍 <strong>Vote:</strong> Help others by voting on useful resources</div>
+                        <div class="tip-item">🔗 <strong>Share:</strong> Add links to reports, tools, and best practices</div>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="Search resources by title, description, geography, or industry..." id="searchBar">
+                    <button class="add-new-btn" onclick="openModal()">Add New</button>
+                </div>
+            </div>
+            <div class="database-entries" id="databaseEntries">
+                <!-- Database entries will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <!-- Announcements Column -->
+            <div class="announcements-column">
+                <div class="announcements-header">Announcements</div>
+                
+                <div class="location-slider">
+                    <div class="slider-option active" onclick="switchLocation('CDMX')">CDMX</div>
+                    <div class="slider-option" onclick="switchLocation('MTY')">MTY</div>
+                </div>
+
+                <div id="cdmx-announcements">
+                    <div id="cdmx-toggle-container" class="toggle-container">
+                        <label class="toggle-label">CDMX Food Status</label>
+                        <div class="toggle-controls">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="cdmx-toggle" onchange="updateStatus('cdmx')">
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-section">
+                                <div class="toggle-status" id="cdmx-status">Not ready :(</div>
+                                <div class="timestamp" id="cdmx-timestamp"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cdmx-food-menu" class="food-menu">
+                        <div class="menu-item">
+                            <label class="menu-label">Protein 1:</label>
+                            <input type="text" class="menu-input" id="cdmx-protein1" placeholder="Enter protein 1">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Protein 2:</label>
+                            <input type="text" class="menu-input" id="cdmx-protein2" placeholder="Enter protein 2">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Side 1:</label>
+                            <input type="text" class="menu-input" id="cdmx-side1" placeholder="Enter side 1">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Side 2:</label>
+                            <input type="text" class="menu-input" id="cdmx-side2" placeholder="Enter side 2">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Extra 1:</label>
+                            <input type="text" class="menu-input" id="cdmx-extra1" placeholder="Enter extra 1">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Extra 2:</label>
+                            <input type="text" class="menu-input" id="cdmx-extra2" placeholder="Enter extra 2">
+                        </div>
+                    </div>
+                    <div id="cdmx-no-food" class="no-food-message hidden">No food served today</div>
+                </div>
+
+                <div id="mty-announcements" class="hidden">
+                    <div id="mty-toggle-container" class="toggle-container">
+                        <label class="toggle-label">MTY Food Status</label>
+                        <div class="toggle-controls">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="mty-toggle" onchange="updateStatus('mty')">
+                                <span class="slider"></span>
+                            </label>
+                            <div class="toggle-section">
+                                <div class="toggle-status" id="mty-status">Not ready :(</div>
+                                <div class="timestamp" id="mty-timestamp"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mty-food-menu" class="food-menu">
+                        <div class="menu-item">
+                            <label class="menu-label">Protein 1:</label>
+                            <input type="text" class="menu-input" id="mty-protein1" placeholder="Enter protein 1">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Protein 2:</label>
+                            <input type="text" class="menu-input" id="mty-protein2" placeholder="Enter protein 2">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Side 1:</label>
+                            <input type="text" class="menu-input" id="mty-side1" placeholder="Enter side 1">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Side 2:</label>
+                            <input type="text" class="menu-input" id="mty-side2" placeholder="Enter side 2">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Extra 1:</label>
+                            <input type="text" class="menu-input" id="mty-extra1" placeholder="Enter extra 1">
+                        </div>
+                        <div class="menu-item">
+                            <label class="menu-label">Extra 2:</label>
+                            <input type="text" class="menu-input" id="mty-extra2" placeholder="Enter extra 2">
+                        </div>
+                    </div>
+                    <div id="mty-no-food" class="no-food-message hidden">No food served today</div>
+                </div>
+            </div>
+
+            <!-- Resources Column -->
+            <div class="resources-column">
+                <div class="resources-header">Resources</div>
+                
+                <div id="resource-sections">
+                    <div class="resource-section">
+                        <div class="resource-section-header">
+                            <div class="section-title-container" onclick="toggleResourceSection('bios')">
+                                <span>BIOs</span>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="section-actions">
+                                <button class="section-edit-btn" onclick="editSection('bios')" title="Edit Section">⚙</button>
+                                <button class="section-remove-btn" onclick="removeSection('bios')" title="Remove Section">✕</button>
+                            </div>
+                        </div>
+                        <div class="resource-content" id="bios-content">
+                            <div class="resource-links" id="bios-links">
+                                <!-- Resource links will be added here -->
+                            </div>
+                            <button class="add-resource-btn" onclick="openResourceModal('bios')">Add New</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="add-new-section-btn" onclick="openNewSectionModal()">Add New</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for adding/editing entries -->
+    <div id="entryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalTitle">Add New Entry</div>
+            <form id="entryForm">
+                <div class="form-group">
+                    <label class="form-label" for="entryTitle">Title</label>
+                    <input type="text" class="form-input" id="entryTitle" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="entryLink">Link</label>
+                    <div class="form-input-container">
+                        <input type="url" class="form-input-with-button" id="entryLink" required>
+                        <button type="button" class="auto-generate-btn">
+                            Auto populate
+                            <div class="openai-logo">AI</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="form-label" for="entryGeo">Geography</label>
+                    <select class="form-select" id="entryGeo" required>
+                        <option value="NA" selected>NA</option>
+                        <option value="World">World</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="France">France</option>
+                        <option value="Germany">Germany</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Finland">Finland</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Czech Republic">Czech Republic</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Bulgaria">Bulgaria</option>
+                        <option value="Croatia">Croatia</option>
+                        <option value="Slovenia">Slovenia</option>
+                        <option value="Slovakia">Slovakia</option>
+                        <option value="Estonia">Estonia</option>
+                        <option value="Latvia">Latvia</option>
+                        <option value="Lithuania">Lithuania</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Iceland">Iceland</option>
+                        <option value="Luxembourg">Luxembourg</option>
+                        <option value="Malta">Malta</option>
+                        <option value="Cyprus">Cyprus</option>
+                        <option value="China">China</option>
+                        <option value="Japan">Japan</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Hong Kong">Hong Kong</option>
+                        <option value="Australia">Australia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="Libya">Libya</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Ivory Coast">Ivory Coast</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Central African Republic">Central African Republic</option>
+                        <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+                        <option value="Republic of the Congo">Republic of the Congo</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Swaziland">Swaziland</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Swaziland">Swaziland</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Mozambique">Mozambique</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="entryIndustry">Industry</label>
+                    <div class="industry-dropdown" id="industryDropdown">
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-industrial" value="Industrial Goods">
+                            <label for="industry-industrial">Industrial Goods</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-technology" value="Technology, Media and Telecom">
+                            <label for="industry-technology">Technology, Media and Telecom</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-energy" value="Energy">
+                            <label for="industry-energy">Energy</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-public" value="Public Sector">
+                            <label for="industry-public">Public Sector</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-financial" value="Financial Institutions">
+                            <label for="industry-financial">Financial Institutions</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-healthcare" value="Health Care">
+                            <label for="industry-healthcare">Health Care</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-consumer" value="Consumer">
+                            <label for="industry-consumer">Consumer</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-travel" value="Travel, Cities and Infrastructure">
+                            <label for="industry-travel">Travel, Cities and Infrastructure</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-investors" value="Principal Investors and Private Equity">
+                            <label for="industry-investors">Principal Investors and Private Equity</label>
+                        </div>
+                        <div class="industry-option">
+                            <input type="checkbox" id="industry-insurance" value="Insurance">
+                            <label for="industry-insurance">Insurance</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="entryDescription">Description</label>
+                    <textarea class="form-textarea" id="entryDescription" required></textarea>
+                </div>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Resource Modal -->
+    <div id="resourceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="resourceModalTitle">Add New Resource</div>
+            <form id="resourceForm">
+                <div class="form-group">
+                    <label class="form-label" for="resourceTitle">Title</label>
+                    <input type="text" class="form-input" id="resourceTitle" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="resourceLink">Link</label>
+                    <input type="url" class="form-input" id="resourceLink" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" onclick="closeResourceModal()">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- New Section Modal -->
+    <div id="newSectionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Add New Section</div>
+            <form id="newSectionForm">
+                <div class="form-group">
+                    <label class="form-label" for="sectionTitle">Section Title</label>
+                    <input type="text" class="form-input" id="sectionTitle" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" onclick="closeNewSectionModal()">Cancel</button>
+                    <button type="submit" class="save-btn">Create Section</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Database functionality
+        let databaseEntries = [];
+        let currentEditIndex = -1;
+        let lastUpdateTimes = {
+            cdmx: null,
+            mty: null
+        };
+        let userVotes = {}; // Track user votes for each entry
+        let resourceEntries = {
+            bios: []
+        };
+        let currentResourceSection = '';
+        let currentResourceEditIndex = -1;
+        let sectionCounter = 0;
+        let currentSectionEditId = '';
+
+        // Search functionality
+        document.getElementById('searchBar').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const entries = document.querySelectorAll('.database-entry');
+            
+            entries.forEach(entry => {
+                const title = entry.querySelector('.entry-title').textContent.toLowerCase();
+                const description = entry.querySelector('.entry-description')?.textContent.toLowerCase() || '';
+                const geography = entry.querySelector('.entry-geography')?.textContent.toLowerCase() || '';
+                const industries = entry.querySelector('.industry-tags')?.textContent.toLowerCase() || '';
+                
+                if (title.includes(searchTerm) || 
+                    description.includes(searchTerm) || 
+                    geography.includes(searchTerm) || 
+                    industries.includes(searchTerm)) {
+                    entry.style.display = 'flex';
+                } else {
+                    entry.style.display = 'none';
+                }
+            });
+        });
+
+        // Modal functionality
+        function openModal(editIndex = -1) {
+            const modal = document.getElementById('entryModal');
+            const form = document.getElementById('entryForm');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            if (editIndex >= 0) {
+                // Edit mode
+                modalTitle.textContent = 'Edit Entry';
+                const entry = databaseEntries[editIndex];
+                document.getElementById('entryTitle').value = entry.title;
+                document.getElementById('entryLink').value = entry.link;
+                document.getElementById('entryGeo').value = entry.geo;
+                document.getElementById('entryDescription').value = entry.description;
+                
+                // Clear all industry checkboxes first
+                document.querySelectorAll('#industryDropdown input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Check the industries that were selected
+                if (entry.industries) {
+                    entry.industries.forEach(industry => {
+                        const checkbox = document.querySelector(`#industryDropdown input[value="${industry}"]`);
+                        if (checkbox) checkbox.checked = true;
+                    });
+                }
+                
+                currentEditIndex = editIndex;
+            } else {
+                // Add mode
+                modalTitle.textContent = 'Add New Entry';
+                form.reset();
+                document.getElementById('entryGeo').value = 'NA';
+                
+                // Clear all industry checkboxes
+                document.querySelectorAll('#industryDropdown input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                currentEditIndex = -1;
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('entryModal').style.display = 'none';
+            currentEditIndex = -1;
+        }
+
+        // Form submission
+        document.getElementById('entryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const linkInput = document.getElementById('entryLink').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Check for duplicate links (only for new entries)
+            if (currentEditIndex === -1) {
+                const isDuplicate = databaseEntries.some(entry => 
+                    entry.link.toLowerCase() === linkInput.toLowerCase()
+                );
+                
+                if (isDuplicate) {
+                    errorMessage.textContent = 'This link has already been added to the database. Please use a different link.';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+            } else {
+                // For editing, check duplicates excluding current entry
+                const isDuplicate = databaseEntries.some((entry, index) => 
+                    index !== currentEditIndex && 
+                    entry.link.toLowerCase() === linkInput.toLowerCase()
+                );
+                
+                if (isDuplicate) {
+                    errorMessage.textContent = 'This link has already been added to the database. Please use a different link.';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+            }
+            
+            // Hide error message if validation passes
+            errorMessage.style.display = 'none';
+            
+            // Get selected industries
+            const selectedIndustries = [];
+            document.querySelectorAll('#industryDropdown input[type="checkbox"]:checked').forEach(checkbox => {
+                selectedIndustries.push(checkbox.value);
+            });
+            
+            const entry = {
+                title: document.getElementById('entryTitle').value,
+                link: document.getElementById('entryLink').value,
+                geo: document.getElementById('entryGeo').value,
+                description: document.getElementById('entryDescription').value,
+                industries: selectedIndustries,
+                votes: currentEditIndex >= 0 ? databaseEntries[currentEditIndex].votes || 0 : 0
+            };
+            
+            if (currentEditIndex >= 0) {
+                // Edit existing entry
+                databaseEntries[currentEditIndex] = entry;
+            } else {
+                // Add new entry
+                databaseEntries.push(entry);
+            }
+            
+            renderDatabaseEntries();
+            closeModal();
+        });
+
+        // Render database entries
+        function renderDatabaseEntries() {
+            const container = document.getElementById('databaseEntries');
+            container.innerHTML = '';
+            
+            databaseEntries.forEach((entry, index) => {
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'database-entry';
+                // Create industry tags HTML
+                const industryTags = entry.industries && entry.industries.length > 0 
+                    ? entry.industries.map(industry => `<span class="industry-tag">${industry}</span>`).join('')
+                    : '';
+                
+                entryDiv.innerHTML = `
+                    <div class="entry-info">
+                        <div class="entry-title">${entry.title}</div>
+                        <div class="entry-description" style="color: #666; font-size: 14px; margin-bottom: 5px;">${entry.description}</div>
+                        <div class="entry-geography" style="font-size: 12px; color: #999;">Geography: ${entry.geo}</div>
+                        ${industryTags ? `<div class="industry-tags">${industryTags}</div>` : ''}
+                    </div>
+                    <div class="entry-actions">
+                        <div class="voting-section">
+                            <div class="vote-buttons">
+                                <button class="vote-btn thumbs-up" onclick="vote(${index}, 'up')" title="Like">▲</button>
+                                <div class="vote-score" id="score-${index}">${entry.votes || 0}</div>
+                                <button class="vote-btn thumbs-down" onclick="vote(${index}, 'down')" title="Dislike">▼</button>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <a href="${entry.link}" target="_blank" class="link-icon" title="Open Link">🔗</a>
+                            <button class="edit-btn" onclick="openModal(${index})" title="Edit">⚙</button>
+                            <button class="remove-btn" onclick="removeEntry(${index})" title="Remove">✕</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(entryDiv);
+            });
+        }
+
+        // Remove entry
+        function removeEntry(index) {
+            if (confirm('Are you sure you want to remove this entry?')) {
+                databaseEntries.splice(index, 1);
+                renderDatabaseEntries();
+            }
+        }
+
+        // Voting functionality
+        function vote(entryIndex, voteType) {
+            const entry = databaseEntries[entryIndex];
+            const voteKey = `entry_${entryIndex}`;
+            const currentVote = userVotes[voteKey];
+            
+            // Initialize vote count if not exists
+            if (entry.votes === undefined) {
+                entry.votes = 0;
+            }
+            
+            // Handle vote logic
+            if (currentVote === voteType) {
+                // Same vote - remove it
+                if (voteType === 'up') {
+                    entry.votes--;
+                } else {
+                    entry.votes++;
+                }
+                delete userVotes[voteKey];
+            } else if (currentVote) {
+                // Different vote - change from one to the other
+                if (currentVote === 'up' && voteType === 'down') {
+                    entry.votes -= 2; // Remove up vote, add down vote
+                } else if (currentVote === 'down' && voteType === 'up') {
+                    entry.votes += 2; // Remove down vote, add up vote
+                }
+                userVotes[voteKey] = voteType;
+            } else {
+                // No previous vote - add new vote
+                if (voteType === 'up') {
+                    entry.votes++;
+                } else {
+                    entry.votes--;
+                }
+                userVotes[voteKey] = voteType;
+            }
+            
+            // Update the display
+            document.getElementById(`score-${entryIndex}`).textContent = entry.votes;
+            
+            // Update button states
+            updateVoteButtons(entryIndex);
+        }
+
+        // Update vote button visual states
+        function updateVoteButtons(entryIndex) {
+            const voteKey = `entry_${entryIndex}`;
+            const currentVote = userVotes[voteKey];
+            const upButton = document.querySelector(`button[onclick="vote(${entryIndex}, 'up')"]`);
+            const downButton = document.querySelector(`button[onclick="vote(${entryIndex}, 'down')"]`);
+            
+            // Reset all button states
+            upButton.classList.remove('voted');
+            downButton.classList.remove('voted');
+            
+            // Apply current vote state
+            if (currentVote === 'up') {
+                upButton.classList.add('voted');
+            } else if (currentVote === 'down') {
+                downButton.classList.add('voted');
+            }
+        }
+
+        // Announcements functionality
+        function switchLocation(location) {
+            const cdmxAnnouncements = document.getElementById('cdmx-announcements');
+            const mtyAnnouncements = document.getElementById('mty-announcements');
+            const cdmxOption = document.querySelector('.slider-option:first-child');
+            const mtyOption = document.querySelector('.slider-option:last-child');
+            
+            if (location === 'CDMX') {
+                cdmxAnnouncements.classList.remove('hidden');
+                mtyAnnouncements.classList.add('hidden');
+                cdmxOption.classList.add('active');
+                mtyOption.classList.remove('active');
+            } else {
+                cdmxAnnouncements.classList.add('hidden');
+                mtyAnnouncements.classList.remove('hidden');
+                cdmxOption.classList.remove('active');
+                mtyOption.classList.add('active');
+            }
+        }
+
+        function updateStatus(location) {
+            const toggle = document.getElementById(`${location}-toggle`);
+            const status = document.getElementById(`${location}-status`);
+            const timestamp = document.getElementById(`${location}-timestamp`);
+            
+            // Update timestamp
+            const now = new Date();
+            const timeString = now.toLocaleString();
+            lastUpdateTimes[location] = now;
+            timestamp.textContent = `Last updated: ${timeString}`;
+            
+            if (toggle.checked) {
+                status.textContent = 'Food is served!';
+                status.style.color = '#59b277';
+            } else {
+                status.textContent = 'Not ready :(';
+                status.style.color = '#e53e3e';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('entryModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Check if today is a food day (Monday, Wednesday, Friday)
+        function isFoodDay() {
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            return dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5; // Monday, Wednesday, Friday
+        }
+
+        // Update food status display based on current day
+        function updateFoodDayDisplay() {
+            const isFood = isFoodDay();
+            
+            // CDMX
+            const cdmxToggleContainer = document.getElementById('cdmx-toggle-container');
+            const cdmxFoodMenu = document.getElementById('cdmx-food-menu');
+            const cdmxNoFood = document.getElementById('cdmx-no-food');
+            
+            if (isFood) {
+                cdmxToggleContainer.classList.remove('hidden');
+                cdmxFoodMenu.classList.remove('hidden');
+                cdmxNoFood.classList.add('hidden');
+            } else {
+                cdmxToggleContainer.classList.add('hidden');
+                cdmxFoodMenu.classList.add('hidden');
+                cdmxNoFood.classList.remove('hidden');
+                // Reset CDMX toggle to default
+                document.getElementById('cdmx-toggle').checked = false;
+                document.getElementById('cdmx-status').textContent = 'Not ready :(';
+                document.getElementById('cdmx-status').style.color = '#e53e3e';
+                document.getElementById('cdmx-timestamp').textContent = 'Last updated: Never';
+                // Clear CDMX food menu
+                document.getElementById('cdmx-protein1').value = '';
+                document.getElementById('cdmx-protein2').value = '';
+                document.getElementById('cdmx-side1').value = '';
+                document.getElementById('cdmx-side2').value = '';
+                document.getElementById('cdmx-extra1').value = '';
+                document.getElementById('cdmx-extra2').value = '';
+            }
+            
+            // MTY
+            const mtyToggleContainer = document.getElementById('mty-toggle-container');
+            const mtyFoodMenu = document.getElementById('mty-food-menu');
+            const mtyNoFood = document.getElementById('mty-no-food');
+            
+            if (isFood) {
+                mtyToggleContainer.classList.remove('hidden');
+                mtyFoodMenu.classList.remove('hidden');
+                mtyNoFood.classList.add('hidden');
+            } else {
+                mtyToggleContainer.classList.add('hidden');
+                mtyFoodMenu.classList.add('hidden');
+                mtyNoFood.classList.remove('hidden');
+                // Reset MTY toggle to default
+                document.getElementById('mty-toggle').checked = false;
+                document.getElementById('mty-status').textContent = 'Not ready :(';
+                document.getElementById('mty-status').style.color = '#e53e3e';
+                document.getElementById('mty-timestamp').textContent = 'Last updated: Never';
+                // Clear MTY food menu
+                document.getElementById('mty-protein1').value = '';
+                document.getElementById('mty-protein2').value = '';
+                document.getElementById('mty-side1').value = '';
+                document.getElementById('mty-side2').value = '';
+                document.getElementById('mty-extra1').value = '';
+                document.getElementById('mty-extra2').value = '';
+            }
+        }
+
+        // Initialize the page
+        renderDatabaseEntries();
+        
+        // Initialize timestamps
+        document.getElementById('cdmx-timestamp').textContent = 'Last updated: Never';
+        document.getElementById('mty-timestamp').textContent = 'Last updated: Never';
+        
+        // Check and update food day display
+        updateFoodDayDisplay();
+        
+        // Initialize vote button states
+        setTimeout(() => {
+            databaseEntries.forEach((entry, index) => {
+                updateVoteButtons(index);
+            });
+        }, 100);
+
+        // Resource functionality
+        function toggleResourceSection(section) {
+            const header = document.querySelector(`[onclick="toggleResourceSection('${section}')"]`);
+            const content = document.getElementById(`${section}-content`);
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                header.classList.remove('expanded');
+            } else {
+                content.classList.add('expanded');
+                header.classList.add('expanded');
+            }
+        }
+
+        function openResourceModal(section, editIndex = -1) {
+            currentResourceSection = section;
+            currentResourceEditIndex = editIndex;
+            
+            const modal = document.getElementById('resourceModal');
+            const modalTitle = document.getElementById('resourceModalTitle');
+            const form = document.getElementById('resourceForm');
+            
+            if (editIndex >= 0) {
+                // Edit mode
+                modalTitle.textContent = 'Edit Resource';
+                const resource = resourceEntries[section][editIndex];
+                document.getElementById('resourceTitle').value = resource.title;
+                document.getElementById('resourceLink').value = resource.link;
+            } else {
+                // Add mode
+                modalTitle.textContent = 'Add New Resource';
+                form.reset();
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function closeResourceModal() {
+            document.getElementById('resourceModal').style.display = 'none';
+            currentResourceSection = '';
+            currentResourceEditIndex = -1;
+        }
+
+        // Resource form submission
+        document.getElementById('resourceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('resourceTitle').value;
+            const link = document.getElementById('resourceLink').value;
+            
+            const resource = {
+                title: title,
+                link: link
+            };
+            
+            if (currentResourceEditIndex >= 0) {
+                // Edit existing resource
+                resourceEntries[currentResourceSection][currentResourceEditIndex] = resource;
+            } else {
+                // Add new resource
+                resourceEntries[currentResourceSection].push(resource);
+            }
+            
+            renderResourceLinks(currentResourceSection);
+            closeResourceModal();
+        });
+
+        function renderResourceLinks(section) {
+            const container = document.getElementById(`${section}-links`);
+            container.innerHTML = '';
+            
+            resourceEntries[section].forEach((resource, index) => {
+                const resourceItem = document.createElement('div');
+                resourceItem.className = 'resource-item';
+                
+                resourceItem.innerHTML = `
+                    <a href="${resource.link}" target="_blank" class="resource-link">${resource.title}</a>
+                    <div class="resource-actions">
+                        <button class="resource-edit-btn" onclick="openResourceModal('${section}', ${index})" title="Edit">⚙</button>
+                        <button class="resource-remove-btn" onclick="removeResource('${section}', ${index})" title="Remove">✕</button>
+                    </div>
+                `;
+                
+                container.appendChild(resourceItem);
+            });
+        }
+
+        function removeResource(section, index) {
+            if (confirm('Are you sure you want to remove this resource?')) {
+                resourceEntries[section].splice(index, 1);
+                renderResourceLinks(section);
+            }
+        }
+
+        // New section functionality
+        function openNewSectionModal() {
+            document.getElementById('newSectionModal').style.display = 'block';
+            document.getElementById('newSectionForm').reset();
+        }
+
+        function closeNewSectionModal() {
+            document.getElementById('newSectionModal').style.display = 'none';
+            currentSectionEditId = '';
+            document.getElementById('newSectionForm').reset();
+        }
+
+        // New section form submission
+        document.getElementById('newSectionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const sectionTitle = document.getElementById('sectionTitle').value;
+            
+            if (currentSectionEditId) {
+                // Edit existing section
+                const titleElement = document.querySelector(`[onclick="toggleResourceSection('${currentSectionEditId}')"] span`);
+                titleElement.textContent = sectionTitle;
+                currentSectionEditId = '';
+            } else {
+                // Create new section
+                const sectionId = `section_${++sectionCounter}`;
+                
+                // Create new section in resourceEntries
+                resourceEntries[sectionId] = [];
+                
+                // Create new section HTML
+                const sectionsContainer = document.getElementById('resource-sections');
+                const newSection = document.createElement('div');
+                newSection.className = 'resource-section';
+                newSection.innerHTML = `
+                    <div class="resource-section-header">
+                        <div class="section-title-container" onclick="toggleResourceSection('${sectionId}')">
+                            <span>${sectionTitle}</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="section-actions">
+                            <button class="section-edit-btn" onclick="editSection('${sectionId}')" title="Edit Section">⚙</button>
+                            <button class="section-remove-btn" onclick="removeSection('${sectionId}')" title="Remove Section">✕</button>
+                        </div>
+                    </div>
+                    <div class="resource-content" id="${sectionId}-content">
+                        <div class="resource-links" id="${sectionId}-links">
+                            <!-- Resource links will be added here -->
+                        </div>
+                        <button class="add-resource-btn" onclick="openResourceModal('${sectionId}')">Add New</button>
+                    </div>
+                `;
+                
+                sectionsContainer.appendChild(newSection);
+            }
+            
+            closeNewSectionModal();
+        });
+
+        // Section management functions
+        function editSection(sectionId) {
+            currentSectionEditId = sectionId;
+            const currentTitle = document.querySelector(`[onclick="toggleResourceSection('${sectionId}')"] span`).textContent;
+            document.getElementById('sectionTitle').value = currentTitle;
+            document.querySelector('#newSectionModal .modal-header').textContent = 'Edit Section';
+            document.getElementById('newSectionModal').style.display = 'block';
+        }
+
+        function removeSection(sectionId) {
+            if (confirm('Are you sure you want to remove this section and all its resources?')) {
+                // Remove from resourceEntries
+                delete resourceEntries[sectionId];
+                
+                // Remove from DOM
+                const sectionElement = document.querySelector(`[onclick="toggleResourceSection('${sectionId}')"]`).closest('.resource-section');
+                sectionElement.remove();
+            }
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            const resourceModal = document.getElementById('resourceModal');
+            const newSectionModal = document.getElementById('newSectionModal');
+            
+            if (event.target === resourceModal) {
+                closeResourceModal();
+            }
+            if (event.target === newSectionModal) {
+                closeNewSectionModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
